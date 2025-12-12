@@ -17,9 +17,9 @@ class User(BaseModelMixin, Base):
     first_name: Mapped[str] = mapped_column(String)
     last_name: Mapped[str] = mapped_column(String, nullable=True)
     username: Mapped[str] = mapped_column(String, unique=True)
-    language_code: Mapped[str] = mapped_column(String)
-    is_bot: Mapped[bool] = mapped_column(Boolean, default=False)
-    is_premium: Mapped[bool] = mapped_column(Boolean, default=False)
+    language_code: Mapped[str] = mapped_column(String, nullable=True)
+    is_bot: Mapped[bool] = mapped_column(Boolean, nullable=True)
+    is_premium: Mapped[bool] = mapped_column(Boolean, nullable=True)
 
     messages: Mapped[List["Message"]] = relationship(back_populates="user", cascade="all, delete-orphan")
 
